@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "updated": "2026-11-16",
+  "_readme": "DATA ONLY. This file lists how to find each part of the Google page. When Google changes its page, fix this file (not the code) and raise 'version' by 1. Never put JavaScript in here.",
+
+  "layout": {
+    "_readme": "Used when hiding a whole 'block' of results. The extension climbs up from the matched heading until it reaches one of these page areas, then hides the block just inside it.",
+    "stopAt": ["#rso", "#center_col", "#rcnt", "#search", "#main", "body"],
+    "resultTitleSelector": "a h3",
+    "maxResultTitlesInBlock": 3
+  },
+
+  "elements": {
+    "aiOverview": {
+      "label": "AI Overviews",
+      "description": "The AI summary at the top of the results, and the ones lower down the page.",
+      "defaultOn": true,
+      "selectors": [
+        "div.hdzaWe",
+        "div.M8OgIe"
+      ],
+      "text": {
+        "scan": "h1, h2, h3, [role='heading']",
+        "match": [
+          "AI Overview",
+          "AI Overviews",
+          "Vue d'ensemble par IA",
+          "Übersicht mit KI",
+          "Resumen creado con IA",
+          "Panoramica creata con l'IA",
+          "Overzicht met AI"
+        ],
+        "container": "resultBlock"
+      }
+    },
+
+    "aiModeTab": {
+      "label": "AI Mode tab and button",
+      "description": "The 'AI Mode' tab above the results and the AI Mode button by the search box.",
+      "defaultOn": true,
+      "selectors": [
+        "[role='listitem']:has(> a[href*='udm=50'])",
+        "a[href*='udm=50']",
+        "button[aria-label='AI Mode']",
+        "[role='button'][aria-label='AI Mode']",
+        "a[aria-label='AI Mode']"
+      ],
+      "text": {
+        "scan": "a, button, [role='button'], [role='link'], [role='tab']",
+        "match": ["AI Mode", "Mode IA", "KI-Modus", "Modo IA", "Modalità IA", "AI-modus"],
+        "container": "self",
+        "closest": "[role='listitem']"
+      }
+    }
+  }
+}
